@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage[portuguese]{babel}
+\usepackage{amsthm, amsmath, amssymb, amsfonts, mathrsfs, mathtools, xfrac, cancel}
+\usepackage{seqsplit, enumitem}
+\usepackage{graphicx, setspace, xcolor, subcaption, svg, float}
+\usepackage{byo-twemojis}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[bottom]{footmisc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue}
+% Layout
+\usepackage{lastpage, fancyhdr}
+\headheight 13pt
+\setlength{\headheight}{13pt}
+\pagestyle{fancy}
+
+\rhead{}
+\lhead{Divisibilidade}
+\cfoot{Página \thepage\ de \pageref*{LastPage}}
+
+% Commands
+\newcommand{\q}[1]{``#1''}
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\DeclareMathOperator*{\interior}{\text{int}}
+\newcommand{\textover}[2]{\overset{\mathclap{\scriptstyle #2}}{#1}}
+
+% Theorems
+\newtheorem{theorem}{Teorema}
+\newtheorem{problem}[theorem]{Problema}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{example}[theorem]{Exemplo}
+\newenvironment{solution}
+  {\renewcommand{\proofname}{Solução}\proof}
+  {\endproof}
+
+\begin{document}
+
+Antes de qualquer coisa, um problema. Não prossiga antes de resolvê-lo ou ao menos tentar bastante. Isso significa pensar ao menos 30 minutos nele. Um professor dizia \q{Se você encontrar um problema de olimpíada e não fazer ideia de como começar, parabéns, você encontrou um problema de olimpíada}. Olimpíadas são sobre pensar. Você vai fazer muito isso, inicialmente por ao menos 30 minutos em cada problema, e no futuro (quando chegar em problemas bem difíceis), por uma semana.
+
+\begin{problem}[\href{https://drive.google.com/file/d/1nLw_ak5QO8c5qKCGiEK7El-s1BBm6e1w/view}{OBMEP N2 F1 2022/1}\footnote{\textbf{O}limpíada \textbf{B}rasileira de \textbf{M}atemática das \textbf{E}scolas \textbf{P}úblicas e Privadas \textbf{N}ível \textbf{2} \textbf{F}ase \textbf{1} \textbf{2022} Problema \textbf{1}}]
+As vagas de um estacionamento estão numeradas de $1$ a $99$. Todas as vagas com número ímpar estão ocupadas, e as demais estão vazias. Quantas vagas estão ocupadas?\footnote{A solução se encontra num link sobre \q{OBMEP N2 F1 2022/1}.}
+\end{problem}
+
+Conseguiu? Você deve ter notado que é muito mais fácil começar pensando em \textit{casos pequenos}. Isso não é válido somente aqui, mas em praticamente qualquer outro problema. Sempre que puder fazer um caso menor à mão, \textbf{o faça}.
+
+Mais um:
+
+\begin{problem}[\href{https://www.youtube.com/watch?v=Fokbzx_vYfo}{Canguru Cadete 2020/1}]
+Quantos dos quatro números $2$, $20$, $202$ e $2020$ é que são primos\footnote{Um número $n$ é dito primo quando possui apenas dois divisores positivos: $1$ e ele mesmo, isto é, quando dividido por qualquer outro número que não seja $1$ ou ele mesmo, o resultado \textbf{não} será inteiro.}?
+\end{problem}
+
+Talvez você esteja se perguntando o que esses problemas tem haver com divisão. A razão é simples: para determinar se um número é par podemos conferir se o seu resto\footnote{Sabe o número que fica debaixo do número que está sendo dividido por outro quando você faz uma divisão sem vírgula? Então, chamamos esse número de resto. Por exemplo, $9$ (o \textit{dividendo}) deixa \textit{resto} $1$ na divisão por $4$ (o \textit{divisor}).} na divisão por $2$ é $0$. Bom, mas porque nos limitarmos apenas à par e ímpar? A única resposta plausível é \q{Por que é mais fácil}. Se você quer participar de olimpíadas, então estou certo de que está disposto a não se limitar ao que é mais fácil, então não vamos nos limitar apenas à par e ímpar!
+
+\begin{problem}[\href{https://drive.google.com/file/d/1OvkQTJOquHW-GosgbO7oCZoEDN6zm3NS/view}{OBMEP N2 F1 2023/8}]
+Quantos números inteiros, múltiplos de $3$, existem entre $1$ e $2005$?
+\end{problem}
+
+\begin{problem}[\href{https://drive.google.com/file/d/1vlaDBGODXE2Y4-JruC-UsVO7AWzGOjHd/view}{OBMEP N2 F1 2011/2}]
+Qual é o resto da divisão de $1 \times 2 \times 3 \times 4 \times \cdots \times 2011 + 21$ por $8$?
+\end{problem}
+
+\begin{problem}[\href{https://drive.google.com/file/d/1vWfi0STjlUsbCGdR_dJwNpiSlgZPGopx/view}{OBMEP N2 F1 2013/8}]
+Lucas pensou em um número, dividiu-opor $285$ e obteve resto $77$. Se ele dividir o número em que pensou por $57$, qual é o resto que ele vai encontrar?
+\end{problem}
+
+Esse último é um pouco mais difícil, então o que fazer? Bom, a ideia de \textit{casos pequenos} também se aplica aqui, mas de forma um pouco diferente. Se o problema é que você não conhece o número que Lucas pensou, \q{invente} um! (que satisfaça as condições do enunciado). Chegou em um resultado agora? Tente outras possibilidades. O resultado ainda é o mesmo? Por quê? Se convença de que isso realmente sempre acontece\footnote{Essa parte dos estudos também é importante, e não sou somente eu falando, mas vários outros autores recomendam isso. O ideal seria \textit{provar} isso, o que pode ser feito muito facilmente \q{equacionando}, mas queria ressaltar a ideia de \textit{casos pequenos}.}.
+
+Pronto para algo um pouco mais difícil?
+
+\begin{problem}[\href{https://drive.google.com/file/d/1Efqjc-S8utWqKidOLtr_C4QoqPgaxHST/view}{OBMEP N2 F2 2017/3}]
+Júlia faz o seguinte cálculo com números inteiros positivos: ela escolhe um número, eleva esse número ao cubo e subtrai desse cubo o próprio número. Veja abaixo que o resultado do cálculo de Júlia com o número $2$ é igual a $6$.
+
+\[2^3 - 2 = 8 - 2 = 6\]
+
+a) Qual é o resultado do cálculo de Júlia com o número $3$?
+
+b) Qual é o número que deve ser escolhido por Júlia para que o resultado do cálculo seja $1320$?
+
+c) Explique por que, para qualquer número que Júlia escolher, o resultado final do cálculo será sempre um múltiplo de $6$.
+\end{problem}
+
+Se não conseguir fazer o item \textit{b}, tente \q{equacionar}, ou, em último caso, tente \q{chutar} (de maneira esperta\footnote{Não adianta ficar tentando números aleatoriamente. Tente um e se faça a pergunta \q{O número é maior ou menor que esse? Quão menor/maior será que ele é?}.}) qual é o número. Depois de algumas tentativas você vai chegar lá.
+
+Se não conseguiu fazer o item \textit{c}, \textbf{divida em casos} (mais uma ideia muito importante): E se o número deixar resto $0$ na divisão por $6$? E se for $1$? \dots (esse não é exatamente a melhor maneira, mas \q{gol de pênalti também ganha jogo}).
+
+Agora algumas regras de divisibilidade:
+
+\begin{lemma}
+  O resto da divisão de um número por $3$ é igual ao resto da divisão da soma dos algarismos desse número por $3$.\footnote{Um lema é uma afirmação verdadeira que geralmente é usado para \textit{provar} outras coisas, sejam elas problemas ou teoremas (que são como lemas, mas mais importantes por si só).}
+\end{lemma}
+
+O lema acima também é válido para $9$, a razão disso é que $10$ deixa resto $1$ na divisão por $3$ e por $9$. Esse lema pode ser facilmente provado usando aritmética modular.
+
+\begin{lemma}
+  Um número é par se, e somente se, seu último dígito é $0$, $2$, $4$, $6$ ou $8$. Um número é múltiplo de $5$ se, e somente se, seu último dígito é $0$ ou $5$.
+\end{lemma}
+
+\begin{lemma}
+  Um número é múltiplo de $11$ se, e somente se, a soma de seus algarismos em posições ímpares (contanto da direita para a esquerda) subtraída da soma de seus algarismos das posições pares é múltipla de $11$. Por exemplo, $3455749$ é múltiplo de $11$ pois $9+7+5+3-4-5-4=11$ é múltiplo de $11$.
+\end{lemma}
+
+\begin{example}
+  Prove que o número $m = 111\dots1$ com $n$ $1$'s certamente não é primo quando $n > 2$ deixa resto $0$, $2$, $3$ ou $4$ na divisão por $6$.
+\end{example}
+\begin{solution}
+  Se $n$ deixa resto $0$ na divisão por $6$, então $n$ é par. Se deixa resto $2$ então podemos escrever $n = 6 \tilde{n} + 2 = 2 (3 \tilde{n} + 1)$ com $\tilde{n}$ sendo um inteiro\footnote{Achou esse nome estranho? Dê outro nome, $i$, $k$, $j$, $\blacksquare$, qualquer coisa serve. Escolhi esse nome porque é comum usar um $\sim$ sobre o nome de uma variável que \q{uma modificação} de outra.}, ou seja, $n$ é par. Fica como exercício fazer o mesmo para o resto $4$.
+
+  Mas, pela regra de divisibilidade por 11, se $n$ é par $m$ é divisível por $11$ (por quê?), mas certamente $m > 11$ (por quê), logo $m$ não é primo.
+
+  Algo similar vale para quando $n$ deixa resto $3$ na divisão por $6$ (o quê?).
+\end{solution}
+
+\begin{problem}[\href{https://drive.google.com/file/d/1E9jj8M2qJV168Jr3Ef7kgy9Oro0QsfIc/view}{OBMEP N2 F1 2007/17}]
+A soma dos algarismos de um número par de nove algarismos é $79$. Qual é o algarismo das unidades desse número?
+\end{problem}
+
+Por fim, uma lista de problemas mais desafiadores (não se desanime se não conseguir resolvê-los).
+
+\begin{problem}[OBM Banco 1981 \footnote{\textbf{O}limpíada \textbf{B}rasileira de \textbf{M}atemática \textbf{Banco} de questões \textbf{1981}}]
+Mostre que se $n$ é ímpar então $n^2 - 1$ é divisível por $8$.
+\end{problem}
+
+\begin{problem}[OBM Banco 1982]
+Sejam $x$, $y$, $z$ inteiros tais que $x^3 + y^3 - z^3$ é múltiplo de $7$. Mostre que um desses números é múltiplo de $7$.
+\end{problem}
+
+\begin{problem}[OBM Banco 1981]
+Dado um inteiro $n$, mostre que existem inteiros $x$ e $y$ tais que $x^2 - y^2 = n$ se, e somente se, $n = ab$, com $a$ e $b$ inteiros de mesma paridade.
+\end{problem}
+
+\begin{problem}[OBM Banco 1984]
+Mostre que nenhum número inteiro da forma $1 + 4^n$ é divisível por $3$.
+\end{problem}
+
+\begin{problem}[OBM Banco 1982 $\star$\footnote{Problemas marcados com $\star$ são difíceis e podem necessitar de um conhecimento básico que não está nesse material. Problemas com $\star \star$ são desafiadores. Problemas com $\star \star \star$ são muito desafiadores e necessitam de um conhecimento mais profundo sobre o conteúdo e podem precisar de ideias muito criativas em suas soluções.}]
+Seja $n$ um inteiro maior que $1$. Mostre que $4^n + n^4$ não é primo.
+\end{problem}
+
+\begin{problem}[\href{https://artofproblemsolving.com/community/c1610044h2349401_problem_141}{MONT P1.4.1}\footnote{\textbf{M}odern \textbf{O}lympiad \textbf{N}umber \textbf{T}heory \textbf{P}roblem \textbf{1.4.1}}]
+Encontre todos os inteiros positivos $n$ tais que $3n - 4$, $4n - 5$, $5n - 3$ são todos números primos.
+\end{problem}
+
+\begin{problem}[\href{https://artofproblemsolving.com/community/c1610044h2349405_problem_142}{MONT P1.4.2} $\star$]
+Se $p < q$ são dois números primos consecutivos, mostre que $p + q$ tem ao menos $3$ fatores primos (não necessariamente distintos).
+\end{problem}
+
+A notação abaixo será muito útil no próximo problema (e também muito útil nos problemas acima, apenas não escrevi ela antes porque acredito que dessa forma há mais motivação para introduzi-la).
+
+Se $n$ divide $m$ escrevemos $n \mid m$.
+
+\begin{lemma}
+  Sejam $n$, $a$, $b$, $c$ inteiros. Temos
+
+  (i) Se $n \mid a^k$ qualquer que seja $k$ inteiro positivo.
+
+  (ii) Se $n \mid a$ e $n \mid b$ então $n \mid a x + b y$ quaisquer que sejam $x$ e $y$ inteiros.
+
+  (iii) Se $n \mid a$ então $a = 0$ ou $|n| \le |a|$.
+
+  (iv) Se $a \mid b$ e $b \mid c$ então $a \mid c$.
+\end{lemma}
+\begin{proof}
+  (i) Fica de exercício.
+
+  (ii) Se $n \mid a$ e $n \mid b$ então podemos escrever $a = n \tilde{a}$ e $b = n \tilde{b}$ com $a$ e $b$ inteiros. Assim $a x + b y = n \tilde{a} x + n \tilde{b} y = n (\tilde{a} x + \tilde{b} y)$, um múltiplo de $n$ pois $\tilde{a} x + \tilde{b} y$ é inteiro.
+
+  (iii) Suponha que $d \mid a$ e $a \ne 0$. Nesse caso $a = n \tilde{a}$ com $\tilde{a}$ inteiro diferente de $0$, e consequentemente com valor absoluto $\ge 1$. Consequentemente $|a| = |n| |\tilde{a}| \ge |n| \cdot 1 = |n|$.
+
+  (iv) Se $a \mid b$ e $b \mid c$ existem inteiros $\tilde{b}$ e $\tilde{c}$ tais que $b = a \tilde{b}$ e $c = b \tilde{c}$, donde $c = a \tilde{b} \tilde{c}$, um múltiplo de $a$ pois $\tilde{b} \tilde{c}$ é inteiro.
+\end{proof}
+
+\begin{problem}[\href{https://artofproblemsolving.com/wiki/index.php/1994_IMO_Problems/Problem_4}{IMO 1994/4} $\star \star \star$\footnote{\textbf{I}nternational \textbf{M}athematical \textbf{O}lympiad Problem \textbf{4}}]
+Determine todos os pares $(m, n)$ de inteiros positivos para os quais $\frac{n^3 + 1}{mn - 1}$ é inteiro.
+\end{problem}
+
+A lista de problemas acima é desafiadora, se não conseguir resolver um problema, não se desanime, vá para o próximo problema. Crie uma lista com todos os problemas que não conseguiu resolver. Volte nela periodicamente (por exemplo, a cada dois meses) para tentar novamente os problemas que não conseguiu.
+
+\end{document}
